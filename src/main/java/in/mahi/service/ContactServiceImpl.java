@@ -30,8 +30,13 @@ public class ContactServiceImpl implements ContactService{
 
 	@Override
 	public List<ContactForm> getContactList() {
-		List<ContactForm> findAll = contactRepository.findAll();
-		List<Contact> contactList = new ArrayList<>();
+		List<ContactForm> findAll = new ArrayList<>();
+		List<Contact> contactLists = contactRepository.findAll();
+		for (Contact e : contactLists) {
+			ContactForm cf = new ContactForm();
+			BeanUtils.copyProperties(e,cf);
+			findAll.add(cf);
+		}
 		return findAll;
 	}
 
