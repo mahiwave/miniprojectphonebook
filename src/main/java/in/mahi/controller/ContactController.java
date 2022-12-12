@@ -17,29 +17,29 @@ import in.mahi.service.ContactService;
 public class ContactController {
 
 	@Autowired
-	ContactService contactService;
+	ContactService service;
 	
 	@PostMapping("/save")
 	public String saveContact(@RequestBody ContactForm form) {
-		String status = contactService.saveContact(form);
+		String status = service.saveContact(form);
 		return status;
 	}
 	
 	@PostMapping("/get")
 	public List<ContactForm> listContacts() {
-		List<ContactForm> list = contactService.getContactList();
+		List<ContactForm> list = service.getContactList();
 		return list;
 	}
 	
 	@GetMapping("/edit/{id}")
 	public ContactForm editContact(@RequestBody Integer id) {
-		ContactForm contactForm = contactService.editContact(id);
+		ContactForm contactForm = service.editContact(id);
 		return contactForm;
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public List<ContactForm> deleteContact(@PathVariable Integer id) {
-		List<ContactForm> contactFormList = contactService.deleteContact(id);
+		List<ContactForm> contactFormList = service.deleteContact(id);
 		return contactFormList;
 	}
 }

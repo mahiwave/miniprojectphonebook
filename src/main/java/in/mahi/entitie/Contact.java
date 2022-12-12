@@ -20,16 +20,16 @@ public class Contact {
 	@Id
 	@GeneratedValue
 	@Column(name = "CONTACT_ID")
-	private Integer id;
+	private Integer contactId;
 	
 	@Column(name = "CONTACT_NAME")
-	private String name;
+	private String contactName;
 	
 	@Column(name = "CONTACT_EMAIL")
-	private String email;
+	private String contactEmail;
 	
 	@Column(name = "CONTACT_NUMBER")
-	private Long phoneNumber;
+	private Long contactNumber;
 	
 	@Column(name = "IsActive")
 	private Boolean isActive;

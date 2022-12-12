@@ -6,11 +6,13 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import in.mahi.entitie.Contact;
 import in.mahi.entitiebinding.ContactForm;
 import in.mahi.repository.ContactRepository;
 
+@Service
 public class ContactServiceImpl implements ContactService{
 
 	@Autowired
@@ -22,7 +24,7 @@ public class ContactServiceImpl implements ContactService{
 		BeanUtils.copyProperties(cForm, contact);
 		contact = contactRepository.save(contact);
 		
-		if(contact.getId() !=null) {
+		if(contact.getContactId() !=null) {
 			return "Sucess";
 		}
 		return "Failed";
