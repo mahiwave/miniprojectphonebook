@@ -43,8 +43,8 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
-	public ContactForm editContact(Integer conid) {
-		Optional<Contact> findById = contactRepository.findById(conid);
+	public ContactForm editContact(ContactForm contactForm) {
+		Optional<Contact> findById = contactRepository.findById(contactForm.getContactId());
 		if(findById.isPresent()) {
 			Contact contact = new Contact();
 			ContactForm cForm = new ContactForm();
@@ -62,5 +62,18 @@ public class ContactServiceImpl implements ContactService{
 		return contactList;
 	}
 	
+	@Override
+	public ContactForm getContactById(Integer contactId) {
+
+		Optional<Contact> contactData = contactRepository.findById(contactId);
+		ContactForm cForm = new ContactForm();
+		if (contactData.isPresent()) {
+			Contact contact = new Contact();
+			contact = contactData.get();
+			BeanUtils.copyProperties(contact , cForm);
+			return cForm;
+		}
+		return null;
+	}
 
 }

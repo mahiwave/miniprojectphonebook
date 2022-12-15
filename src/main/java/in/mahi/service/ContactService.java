@@ -13,7 +13,9 @@ public interface ContactService {
 	
 	public List<ContactForm> getContactList();
 	
-	public ContactForm editContact(Integer conid);
+	public ContactForm editContact(ContactForm contactId);
 	
 	public List<ContactForm> deleteContact(Integer conId);
+	
+	public ContactForm getContactById(Integer contactId);
 }
